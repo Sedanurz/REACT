@@ -1,25 +1,21 @@
 import React,{useState} from 'react';
-import  axios  from 'axios';
-function Login(){
+function Form(){
     const [name, setName] = useState();
     const [password, setPassword] = useState();
     //useState:Alanın ilk değeri gibi düşünülebilir.
     const [result, setResult] = useState();
     const myButtonClick = async() =>
         {
-            
-                let requestBody = {
-                service_val_name:name,
-                service_val_password:password
-                }
-                const response = await axios.post ('https://www.mockachino.com/1b9b9eca-13b9-41/login',
-                requestBody);
-                if (response.data.result=="success") {
-                setResult("Giriş Başarılı");
-                } else {
-                setResult("Hatalı kullanıcı adı veya şifre");
-                }
-        
+        if (name==="onur" && password==="1234")
+        {
+        console.log("OK");
+        setResult("Giriş Başarılı");
+        }
+        else
+        {
+        console.log("NOT OK");
+        setResult("Hatalı kullanıcı adı veya şifre");
+        }
     }
     return(
         <form>
@@ -31,8 +27,11 @@ function Login(){
         <br /><br />
         <input type="button" value="Gönder" onClick={()=>myButtonClick()}/>
         <br/><br/>
+        {name}<br/> 
+        {password}<br/>
         {result}
         </form>
           );
         }
-    export default Login
+ 
+    export default Form
